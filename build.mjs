@@ -57,8 +57,8 @@ const render = (cv, updated) => `<!doctype html>
     color: var(--accent); margin: 18px 0 8px;
     padding-bottom: 3px; border-bottom: 1px solid var(--rule);
   }
-  h3 { font-size: 11pt; margin-top: 10px; }
-  .org-meta { color: var(--muted); font-weight: 400; font-size: 10pt; }
+  h3 { font-size: 12.5pt; margin-top: 14px; color: var(--accent); letter-spacing: 0.01em; }
+  .org-meta { color: var(--muted); font-weight: 400; font-size: 10pt; letter-spacing: 0; }
   .role { display: flex; justify-content: space-between; margin-top: 3px; font-size: 10.5pt; }
   .role .dates { color: var(--muted); white-space: nowrap; margin-left: 12px; }
   ul { margin: 5px 0 4px 18px; }
