@@ -6,7 +6,11 @@ import { readdir, mkdir, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const CHROME =
+  process.env.CHROME_PATH ||
+  (process.platform === 'darwin'
+    ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    : 'google-chrome');
 const ROOT = new URL('.', import.meta.url).pathname;
 const DIST = path.join(ROOT, 'dist');
 
