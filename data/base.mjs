@@ -31,7 +31,8 @@ export const cv = {
         'Architected and led delivery of a taxes-management system that generated significant revenue and LTV surplus.',
         'Cut <b>$120K/year</b> in operating expenses through solution research and data analysis that secured a strong position in negotiations with a third party — with zero deployments to running services or infrastructure.',
         'Initiated a refactoring project that made complex third-party integrations <b>2× faster</b> to deliver.',
-        'Hired <b>12 of 15</b> direct reports across two teams; led a role transformation in both, merging Dev and QA into a single engineering role.',
+        'Built a hiring process for backend-oriented Full Stack engineers; hired <b>12 of 15</b> direct reports across two teams.',
+        'Led a role transformation in two teams, merging Dev and QA into a single engineering role.',
       ],
     },
     {
