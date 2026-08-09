@@ -1,0 +1,157 @@
+#!/usr/bin/env node
+// Renders every CV variant in data/ to dist/<name>.html and dist/<basename>.pdf.
+// Usage: node build.mjs [variant ...]   (default: all variants)
+
+import { readdir, mkdir, writeFile } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
+import path from 'node:path';
+
+const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const ROOT = new URL('.', import.meta.url).pathname;
+const DIST = path.join(ROOT, 'dist');
+
+const render = (cv) => `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${cv.name} — CV</title>
+<style>
+  :root {
+    --ink: #1a1f24;
+    --muted: #5a6672;
+    --accent: #0b5d3b;
+    --rule: #d8dde2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.45;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    background: #fff;
+  }
+  @page { size: A4; margin: 14mm 16mm; }
+  @media print { body { padding: 0; max-width: none; } }
+
+  header h1 { font-size: 21pt; font-weight: 700; letter-spacing: -0.02em; }
+  .tagline { font-size: 11.5pt; color: var(--muted); margin-top: 2px; }
+  .contacts { margin-top: 6px; font-size: 9.5pt; color: var(--muted); }
+  .contacts a { color: var(--accent); text-decoration: none; }
+  .target {
+    margin-top: 10px; padding: 7px 10px; font-size: 9.5pt;
+    background: #f2f7f4; border-left: 3px solid var(--accent); border-radius: 2px;
+  }
+
+  h2 {
+    font-size: 10pt; text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--accent); margin: 18px 0 8px;
+    padding-bottom: 3px; border-bottom: 1px solid var(--rule);
+  }
+  h3 { font-size: 11pt; margin-top: 10px; }
+  .org-meta { color: var(--muted); font-weight: 400; font-size: 10pt; }
+  .role { display: flex; justify-content: space-between; margin-top: 3px; font-size: 10.5pt; }
+  .role .dates { color: var(--muted); white-space: nowrap; margin-left: 12px; }
+  ul { margin: 5px 0 4px 18px; }
+  li { margin-bottom: 3px; }
+  p { margin-bottom: 6px; }
+  .skills-line { margin-bottom: 4px; }
+  .edu-item { display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .edu-item .dates { color: var(--muted); white-space: nowrap; margin-left: 12px; }
+  .avoid-break { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>${cv.name}</h1>
+  <div class="tagline">${cv.tagline}</div>
+  <div class="contacts">${cv.contacts.join(' ·\n    ')}</div>
+  ${cv.target ? `<div class="target">${cv.target}</div>` : ''}
+</header>
+
+<section>
+  <h2>Summary</h2>
+  ${cv.summary.map((p) => `<p>${p}</p>`).join('\n  ')}
+</section>
+
+<section>
+  <h2>Experience</h2>
+${cv.experience
+  .map(
+    (job) => `
+  <div class="avoid-break">
+    <h3>${job.company} <span class="org-meta">— ${job.meta}</span></h3>
+${job.roles
+  .map(
+    (r) =>
+      `    <div class="role"><b>${r.title}</b><span class="dates">${r.dates}</span></div>` +
+      (r.bullets
+        ? `\n    <ul>\n${r.bullets.map((b) => `      <li>${b}</li>`).join('\n')}\n    </ul>`
+        : ''),
+  )
+  .join('\n')}${
+      job.bullets
+        ? `\n    <ul>\n${job.bullets.map((b) => `      <li>${b}</li>`).join('\n')}\n    </ul>`
+        : ''
+    }
+  </div>`,
+  )
+  .join('\n')}
+</section>
+
+<section class="avoid-break">
+  <h2>Skills</h2>
+  ${cv.skills.map((s) => `<div class="skills-line"><b>${s.label}:</b> ${s.items}</div>`).join('\n  ')}
+</section>
+
+<section class="avoid-break">
+  <h2>Education</h2>
+  ${cv.education
+    .map(
+      (e) =>
+        `<div class="edu-item"><span><b>${e.degree}</b> — ${e.org}</span><span class="dates">${e.dates}</span></div>`,
+    )
+    .join('\n  ')}
+</section>
+
+<section class="avoid-break">
+  <h2>Languages</h2>
+  <p>${cv.languages}</p>
+</section>
+
+</body>
+</html>
+`;
+
+const requested = process.argv.slice(2);
+const variants = (await readdir(path.join(ROOT, 'data')))
+  .filter((f) => f.endsWith('.mjs'))
+  .map((f) => f.replace(/\.mjs$/, ''))
+  .filter((v) => requested.length === 0 || requested.includes(v));
+
+if (variants.length === 0) {
+  console.error(`No matching variants. Available: check data/*.mjs`);
+  process.exit(1);
+}
+
+await mkdir(DIST, { recursive: true });
+
+for (const variant of variants) {
+  const { cv } = await import(`./data/${variant}.mjs`);
+  const htmlPath = path.join(DIST, `${variant}.html`);
+  const pdfPath = path.join(DIST, `${cv.outputBasename}.pdf`);
+  await writeFile(htmlPath, render(cv));
+  execFileSync(CHROME, [
+    '--headless',
+    '--disable-gpu',
+    '--no-pdf-header-footer',
+    `--print-to-pdf=${pdfPath}`,
+    `file://${htmlPath}`,
+  ]);
+  console.log(`${variant}: ${path.relative(ROOT, htmlPath)} → ${path.relative(ROOT, pdfPath)}`);
+}

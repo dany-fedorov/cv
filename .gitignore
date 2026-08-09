@@ -1,0 +1,9 @@
+# IDE
+.idea/
+
+# Build outputs
+dist/
+
+# Vacancy-targeted variants are private — only the base CV is tracked
+data/*
+!data/base.mjs
