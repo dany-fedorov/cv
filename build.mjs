@@ -145,10 +145,13 @@ if (variants.length === 0) {
 
 await mkdir(DIST, { recursive: true });
 
+const now = new Date();
+const stamp = `${now.toLocaleString('en-US', { month: 'short' })}_${now.getFullYear()}`;
+
 for (const variant of variants) {
   const { cv } = await import(`./data/${variant}.mjs`);
   const htmlPath = path.join(DIST, `${variant}.html`);
-  const pdfPath = path.join(DIST, `${cv.outputBasename}.pdf`);
+  const pdfPath = path.join(DIST, `${cv.outputBasename}_${stamp}.pdf`);
   await writeFile(htmlPath, render(cv));
   execFileSync(CHROME, [
     '--headless',
