@@ -2,7 +2,7 @@
 // Renders every CV variant in data/ to dist/<name>.html and dist/<basename>.pdf.
 // Usage: node build.mjs [variant ...]   (default: all variants)
 
-import { readdir, mkdir, writeFile } from 'node:fs/promises';
+import { readdir, mkdir, writeFile, copyFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 
@@ -164,5 +164,10 @@ for (const variant of variants) {
     `--print-to-pdf=${pdfPath}`,
     `file://${htmlPath}`,
   ]);
-  console.log(`${variant}: ${path.relative(ROOT, htmlPath)} → ${path.relative(ROOT, pdfPath)}`);
+  // Stable alias so shared links survive month-stamp changes.
+  const aliasPath = path.join(DIST, `${cv.outputBasename}.pdf`);
+  await copyFile(pdfPath, aliasPath);
+  console.log(
+    `${variant}: ${path.relative(ROOT, htmlPath)} → ${path.relative(ROOT, pdfPath)} (+ ${path.relative(ROOT, aliasPath)})`,
+  );
 }

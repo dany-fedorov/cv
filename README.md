@@ -1,6 +1,6 @@
 # CV
 
-**Published:** [dany-fedorov.github.io/cv](https://dany-fedorov.github.io/cv/) · [PDF](https://dany-fedorov.github.io/cv/Danylo_Fedorov_CV_Aug_2026.pdf)
+**Published:** [dany-fedorov.github.io/cv](https://dany-fedorov.github.io/cv/) · [PDF](https://dany-fedorov.github.io/cv/Danylo_Fedorov_CV.pdf)
 
 Data-driven CV builder. Base content lives in `data/base.mjs`; each vacancy gets a
 small override file on top of it (`data/<company>.mjs`, kept private).
@@ -14,7 +14,8 @@ node build.mjs <company>  # build one variant
 
 Outputs go to `dist/`: `<variant>.html` and `<basename>_<Mon>_<YYYY>.pdf` — PDF names
 are stamped with the build month (e.g. `Danylo_Fedorov_CV_Aug_2026.pdf`,
-`Danylo_Fedorov_CV_Company_Aug_2026.pdf`).
+`Danylo_Fedorov_CV_Company_Aug_2026.pdf`). Each PDF is also copied to an unstamped
+stable alias (`<basename>.pdf`) so shared links keep working across rebuilds.
 
 Requires Google Chrome (used headless for PDF rendering).
 
