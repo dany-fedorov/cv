@@ -69,7 +69,7 @@ export const cv = {
 
   skills: [
     { label: 'Expert', items: 'Git, Bash / shell scripting, Node.js / TypeScript, CI/CD (GitHub Actions), AWS' },
-    { label: 'Proficient', items: 'Linux, Python, React, SQL' },
+    { label: 'Proficient', items: 'Linux, Python, React, SQL, LLM-assisted code generation' },
     { label: 'Management', items: 'people management, hiring, delivery management' },
   ],
 
