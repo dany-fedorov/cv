@@ -101,7 +101,10 @@ export const cv = {
     },
   ],
 
-  languages: 'Ukrainian — native · English — Upper-Intermediate (B2)',
+  languages: 'Ukrainian — native · English — Advanced (C1)',
+
+  // Shown in the PDF footer as "Latest version" link; hidden in the HTML view.
+  siteUrl: 'https://dany-fedorov.github.io/cv/',
 
   outputBasename: 'Danylo_Fedorov_CV',
 };

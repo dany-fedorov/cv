@@ -68,9 +68,25 @@ const render = (cv, updated) => `<!doctype html>
   .edu-item { display: flex; justify-content: space-between; margin-bottom: 4px; }
   .edu-item .dates { color: var(--muted); white-space: nowrap; margin-left: 12px; }
   .avoid-break { break-inside: avoid; }
+
+  .pdf-btn {
+    position: fixed; top: 16px; right: 16px;
+    background: var(--accent); color: #fff;
+    padding: 8px 14px; border-radius: 6px;
+    font-size: 10pt; text-decoration: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  .pdf-btn:hover { background: #0d6e46; }
+  .print-only { display: none; }
+  @media print {
+    .pdf-btn { display: none; }
+    .print-only { display: inline; }
+  }
 </style>
 </head>
 <body>
+
+<a class="pdf-btn" href="./${cv.outputBasename}.pdf" download>Download PDF</a>
 
 <header>
   <h1>${cv.name}</h1>
@@ -143,7 +159,11 @@ ${
   <p>${cv.languages}</p>
 </section>
 
-<footer class="updated">CV Updated: ${updated}</footer>
+<footer class="updated">CV Updated: ${updated}${
+  cv.siteUrl
+    ? `<span class="print-only"> · Latest version: <a href="${cv.siteUrl}">${cv.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></span>`
+    : ''
+}</footer>
 
 </body>
 </html>
