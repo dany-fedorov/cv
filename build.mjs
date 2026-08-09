@@ -14,7 +14,7 @@ const CHROME =
 const ROOT = new URL('.', import.meta.url).pathname;
 const DIST = path.join(ROOT, 'dist');
 
-const render = (cv) => `<!doctype html>
+const render = (cv, updated) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -46,6 +46,7 @@ const render = (cv) => `<!doctype html>
   .tagline { font-size: 11.5pt; color: var(--muted); margin-top: 2px; }
   .contacts { margin-top: 6px; font-size: 9.5pt; color: var(--muted); }
   .contacts a { color: var(--accent); text-decoration: none; }
+  .updated { margin-top: 3px; font-size: 8.5pt; color: var(--muted); }
   .target {
     margin-top: 10px; padding: 7px 10px; font-size: 9.5pt;
     background: #f2f7f4; border-left: 3px solid var(--accent); border-radius: 2px;
@@ -75,6 +76,7 @@ const render = (cv) => `<!doctype html>
   <h1>${cv.name}</h1>
   <div class="tagline">${cv.tagline}</div>
   <div class="contacts">${cv.contacts.join(' ·\n    ')}</div>
+  <div class="updated">Updated: ${updated}</div>
   ${cv.target ? `<div class="target">${cv.target}</div>` : ''}
 </header>
 
@@ -146,13 +148,14 @@ if (variants.length === 0) {
 await mkdir(DIST, { recursive: true });
 
 const now = new Date();
-const stamp = `${now.toLocaleString('en-US', { month: 'short' })}_${now.getFullYear()}`;
+const updated = `${now.toLocaleString('en-US', { month: 'short' })} ${now.getFullYear()}`;
+const stamp = updated.replace(' ', '_');
 
 for (const variant of variants) {
   const { cv } = await import(`./data/${variant}.mjs`);
   const htmlPath = path.join(DIST, `${variant}.html`);
   const pdfPath = path.join(DIST, `${cv.outputBasename}_${stamp}.pdf`);
-  await writeFile(htmlPath, render(cv));
+  await writeFile(htmlPath, render(cv, updated));
   execFileSync(CHROME, [
     '--headless',
     '--disable-gpu',
