@@ -50,7 +50,7 @@ export const cv = {
       ],
     },
     {
-      company: 'ISS Soft Ukraine',
+      company: 'ISS Soft Ukraine (Інформаційні Програмні Системи)',
       meta: 'Kyiv · 3 yrs 2 mos',
       roles: [
         {
