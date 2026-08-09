@@ -14,7 +14,7 @@ export const cv = {
   target: null,
 
   summary: [
-    'Software engineer with <b>10 years of commercial experience</b> spanning language tooling, backend services, cloud infrastructure, and engineering leadership. For the last ~3 years I lead platform teams at BetterMe; before that — 4 years of hands-on DevOps and full-stack delivery on AWS. I started my career building a COBOL-to-Java translator in Common Lisp.',
+    'Software engineer with <b>10 years of commercial experience</b> spanning language tooling, backend services, cloud infrastructure, and engineering leadership. For the last ~3 years I’ve led platform teams at BetterMe; before that — 4 years of hands-on DevOps and full-stack delivery on AWS. I started my career building a COBOL-to-Java translator in Common Lisp.',
     'Proven record of productive stack switches: Common Lisp → Node.js/React → AWS/DevOps → engineering management.',
   ],
 
@@ -29,7 +29,7 @@ export const cv = {
       bullets: [
         'Lead platform teams building shared backend services and internal tooling used by product teams across the company.',
         'Architected and led delivery of a taxes-management system that generated significant revenue and LTV surplus.',
-        'Cut <b>$120K/year</b> in operating expenses through solution research and data analysis that secured a strong position in negotiations with a third party — with zero deployments to running services or infrastructure.',
+        'Cut <b>$120K/year</b> in vendor costs — solution research and usage-data analysis gave us leverage to renegotiate the contract, with no engineering changes required.',
         'Initiated a refactoring project that made complex third-party integrations <b>2× faster</b> to deliver.',
         'Built a hiring process for backend-oriented Full Stack engineers; hired <b>12 of 15</b> direct reports across two teams.',
         'Led a role transformation in two teams, merging Dev and QA into a single engineering role.',
@@ -45,7 +45,7 @@ export const cv = {
       bullets: [
         'Designed, built, and operated web applications and APIs for client products (Node.js, React).',
         'Owned AWS cloud infrastructure and CI/CD pipelines; automated environments and deployments with shell tooling on Linux.',
-        'As tech lead: was responsible for technical decisions while continuing the hands-on delivery.',
+        'As tech lead: was responsible for technical decisions while continuing hands-on delivery.',
         'Built an interview process for Node.js developers.',
       ],
     },
