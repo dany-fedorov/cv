@@ -46,7 +46,7 @@ const render = (cv, updated) => `<!doctype html>
   .tagline { font-size: 11.5pt; color: var(--muted); margin-top: 2px; }
   .contacts { margin-top: 6px; font-size: 9.5pt; color: var(--muted); }
   .contacts a { color: var(--accent); text-decoration: none; }
-  .updated { margin-top: 3px; font-size: 8.5pt; color: var(--muted); }
+  .updated { margin-top: 16px; font-size: 8.5pt; color: var(--muted); }
   .target {
     margin-top: 10px; padding: 7px 10px; font-size: 9.5pt;
     background: #f2f7f4; border-left: 3px solid var(--accent); border-radius: 2px;
@@ -76,7 +76,6 @@ const render = (cv, updated) => `<!doctype html>
   <h1>${cv.name}</h1>
   <div class="tagline">${cv.tagline}</div>
   <div class="contacts">${cv.contacts.join(' ·\n    ')}</div>
-  <div class="updated">Updated: ${updated}</div>
   ${cv.target ? `<div class="target">${cv.target}</div>` : ''}
 </header>
 
@@ -129,6 +128,8 @@ ${job.roles
   <h2>Languages</h2>
   <p>${cv.languages}</p>
 </section>
+
+<footer class="updated">CV Updated: ${updated}</footer>
 
 </body>
 </html>
