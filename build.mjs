@@ -65,6 +65,12 @@ const render = (cv, updated) => `<!doctype html>
   li { margin-bottom: 3px; }
   p { margin-bottom: 6px; }
   .skills-line { margin-bottom: 4px; }
+  .tech-tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 5px; }
+  .tag {
+    font-size: 8.5pt; color: var(--muted);
+    background: #f0f2f4; border: 1px solid var(--rule);
+    border-radius: 10px; padding: 1px 8px; white-space: nowrap;
+  }
   .edu-item { display: flex; justify-content: space-between; margin-bottom: 4px; }
   .edu-item .dates { color: var(--muted); white-space: nowrap; margin-left: 12px; }
   .avoid-break { break-inside: avoid; }
@@ -127,7 +133,11 @@ ${job.roles
 
 <section class="avoid-break">
   <h2>Skills</h2>
-  ${cv.skills.map((s) => `<div class="skills-line"><b>${s.label}:</b> ${s.items}</div>`).join('\n  ')}
+  ${cv.skills.map((s) => `<div class="skills-line"><b>${s.label}:</b> ${s.items}</div>`).join('\n  ')}${
+    cv.tech?.length
+      ? `\n  <div class="tech-tags">${cv.tech.map((t) => `<span class="tag">${t}</span>`).join('')}</div>`
+      : ''
+  }
 </section>
 
 <section class="avoid-break">

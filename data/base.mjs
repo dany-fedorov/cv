@@ -78,12 +78,31 @@ export const cv = {
       label: 'Proficient',
       items: 'Linux, Python, React, SQL, LLM-assisted code generation',
     },
-    { label: 'Management', items: 'people management, hiring, delivery management' },
-    {
-      label: 'Technologies',
-      items:
-        'NestJS, PostgreSQL, MySQL, MongoDB, Redis, RabbitMQ, Elasticsearch, Kubernetes, Docker, Prisma, TypeORM, Sequelize, AWS Lambda, ECS, EC2, RDS, DynamoDB, SQS, SNS, CloudWatch',
-    },
+    { label: 'Leadership', items: 'people management, hiring, delivery management' },
+  ],
+
+  // Rendered as tag pills below the skills lines.
+  tech: [
+    'NestJS',
+    'PostgreSQL',
+    'MySQL',
+    'MongoDB',
+    'Redis',
+    'RabbitMQ',
+    'Elasticsearch',
+    'Kubernetes',
+    'Docker',
+    'Prisma',
+    'TypeORM',
+    'Sequelize',
+    'AWS Lambda',
+    'ECS',
+    'EC2',
+    'RDS',
+    'DynamoDB',
+    'SQS',
+    'SNS',
+    'CloudWatch',
   ],
 
   education: [
