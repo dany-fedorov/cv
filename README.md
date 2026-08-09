@@ -12,8 +12,9 @@ node build.mjs            # build all variants
 node build.mjs <company>  # build one variant
 ```
 
-Outputs go to `dist/`: `<variant>.html` and `<basename>.pdf`
-(e.g. `Danylo_Fedorov_CV.pdf`, `Danylo_Fedorov_CV_Company.pdf`).
+Outputs go to `dist/`: `<variant>.html` and `<basename>_<Mon>_<YYYY>.pdf` — PDF names
+are stamped with the build month (e.g. `Danylo_Fedorov_CV_Aug_2026.pdf`,
+`Danylo_Fedorov_CV_Company_Aug_2026.pdf`).
 
 Requires Google Chrome (used headless for PDF rendering).
 
