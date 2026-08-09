@@ -124,7 +124,21 @@ ${job.roles
     .join('\n  ')}
 </section>
 
-<section class="avoid-break">
+${
+  cv.certifications?.length
+    ? `<section class="avoid-break">
+  <h2>Certifications</h2>
+  ${cv.certifications
+    .map(
+      (c) =>
+        `<div class="edu-item"><span><b>${c.name}</b> — ${c.org}</span><span class="dates">${c.dates}</span></div>`,
+    )
+    .join('\n  ')}
+</section>
+
+`
+    : ''
+}<section class="avoid-break">
   <h2>Languages</h2>
   <p>${cv.languages}</p>
 </section>

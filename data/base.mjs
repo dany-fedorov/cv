@@ -88,6 +88,19 @@ export const cv = {
     },
   ],
 
+  certifications: [
+    {
+      name: 'AWS Certified Solutions Architect – Associate',
+      org: 'Amazon Web Services',
+      dates: '2023 – 2026',
+    },
+    {
+      name: 'AWS Certified Developer – Associate',
+      org: 'Amazon Web Services',
+      dates: '2023 – 2026',
+    },
+  ],
+
   languages: 'Ukrainian — native · English — Upper-Intermediate (B2)',
 
   outputBasename: 'Danylo_Fedorov_CV',
