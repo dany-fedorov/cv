@@ -46,6 +46,7 @@ export const cv = {
         'Designed, built, and operated web applications and APIs for client products (Node.js, React).',
         'Owned AWS cloud infrastructure and CI/CD pipelines; automated environments and deployments with shell tooling on Linux.',
         'As tech lead: was responsible for technical decisions while continuing the hands-on delivery.',
+        'Built an interview process for Node.js developers.',
       ],
     },
     {
