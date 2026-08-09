@@ -29,7 +29,7 @@ export const cv = {
       bullets: [
         'Lead platform teams building shared backend services and internal tooling used by product teams across the company.',
         'Architected and led delivery of a taxes-management system that generated significant revenue and LTV surplus.',
-        'Cut <b>$120K/year</b> in operating expenses — with zero deployments to running services or infrastructure.',
+        'Cut <b>$120K/year</b> in operating expenses through solution research and data analysis that secured a strong position in negotiations with a third party — with zero deployments to running services or infrastructure.',
         'Initiated a refactoring project that made complex third-party integrations <b>2× faster</b> to deliver.',
         'Hired <b>12 of 15</b> direct reports across two teams; led a role transformation in both, merging Dev and QA into a single engineering role.',
       ],
@@ -70,6 +70,7 @@ export const cv = {
   skills: [
     { label: 'Expert', items: 'Git, Bash / shell scripting, Node.js / TypeScript, CI/CD (GitHub Actions), AWS' },
     { label: 'Proficient', items: 'Linux, Python, React, SQL' },
+    { label: 'Management', items: 'people management, hiring, delivery management' },
   ],
 
   education: [
