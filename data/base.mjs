@@ -21,7 +21,7 @@ export const cv = {
   experience: [
     {
       company: 'BetterMe',
-      meta: 'health & wellness technology, Kyiv',
+      meta: 'health & wellness technology, Kyiv · 2 yrs 10 mos',
       roles: [
         { title: 'Engineering Manager, Platform', dates: 'May 2025 – present' },
         { title: 'Development Team Lead, Platform', dates: 'Nov 2023 – May 2025' },
@@ -37,7 +37,7 @@ export const cv = {
     },
     {
       company: 'Geniusee',
-      meta: 'software product development, Kyiv',
+      meta: 'software product development, Kyiv · 4 yrs',
       roles: [
         { title: 'Tech Lead / DevOps Engineer (AWS, Node.js, React)', dates: 'Jun 2022 – Nov 2023' },
         { title: 'DevOps Engineer / Software Developer (AWS, Node.js, React)', dates: 'Nov 2019 – Jun 2022' },
@@ -51,7 +51,7 @@ export const cv = {
     },
     {
       company: 'ISS Soft Ukraine',
-      meta: 'Kyiv',
+      meta: 'Kyiv · 3 yrs 2 mos',
       roles: [
         {
           title: 'Software Developer (Node.js, React)',
