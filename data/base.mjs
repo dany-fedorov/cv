@@ -70,9 +70,20 @@ export const cv = {
   ],
 
   skills: [
-    { label: 'Expert', items: 'Git, Bash / shell scripting, Node.js / TypeScript, CI/CD (GitHub Actions), AWS' },
-    { label: 'Proficient', items: 'Linux, Python, React, SQL, LLM-assisted code generation' },
+    {
+      label: 'Expert',
+      items: 'Node.js / TypeScript, AWS, CI/CD (GitHub Actions), Git, Bash / shell scripting',
+    },
+    {
+      label: 'Proficient',
+      items: 'Linux, Python, React, SQL, LLM-assisted code generation',
+    },
     { label: 'Management', items: 'people management, hiring, delivery management' },
+    {
+      label: 'Technologies',
+      items:
+        'NestJS, PostgreSQL, MySQL, MongoDB, Redis, RabbitMQ, Elasticsearch, Kubernetes, Docker, Prisma, TypeORM, Sequelize, AWS Lambda, ECS, EC2, RDS, DynamoDB, SQS, SNS, CloudWatch',
+    },
   ],
 
   education: [
