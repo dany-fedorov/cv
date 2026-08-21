@@ -175,6 +175,25 @@ ${
     : ''
 }</footer>
 
+<script data-goatcounter="https://danyfedorov.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+  // Skip the headless file:// pass that renders the PDF.
+  if (location.protocol.startsWith('http')) {
+    document.querySelectorAll('a[href$=".pdf"]').forEach((a) =>
+      a.addEventListener('click', () =>
+        window.goatcounter?.count({ path: 'pdf-download', title: 'PDF download', event: true }),
+      ),
+    );
+    new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) {
+        window.goatcounter?.count({ path: 'scrolled-to-bottom', event: true });
+        obs.disconnect();
+      }
+    }).observe(document.querySelector('footer'));
+  }
+</script>
+
 </body>
 </html>
 `;
