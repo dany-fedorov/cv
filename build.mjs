@@ -180,14 +180,16 @@ ${
 <script>
   // Skip the headless file:// pass that renders the PDF.
   if (location.protocol.startsWith('http')) {
+    const ref = new URLSearchParams(location.search).get('ref');
+    const tag = (name) => (ref ? name + '-' + ref : name);
     document.querySelectorAll('a[href$=".pdf"]').forEach((a) =>
       a.addEventListener('click', () =>
-        window.goatcounter?.count({ path: 'pdf-download', title: 'PDF download', event: true }),
+        window.goatcounter?.count({ path: tag('pdf-download'), title: 'PDF download', event: true }),
       ),
     );
     new IntersectionObserver((entries, obs) => {
       if (entries[0].isIntersecting) {
-        window.goatcounter?.count({ path: 'scrolled-to-bottom', event: true });
+        window.goatcounter?.count({ path: tag('scrolled-to-bottom'), event: true });
         obs.disconnect();
       }
     }).observe(document.querySelector('footer'));
