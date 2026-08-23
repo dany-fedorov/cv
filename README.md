@@ -1,6 +1,6 @@
 # CV
 
-**Published:** [dany-fedorov.github.io/cv](https://dany-fedorov.github.io/cv/) · [PDF](https://dany-fedorov.github.io/cv/Danylo_Fedorov_CV.pdf)
+**Published:** [dany-fedorov.github.io/cv](https://dany-fedorov.github.io/cv/?ref=github-repo) · [PDF](https://dany-fedorov.github.io/cv/Danylo_Fedorov_CV.pdf)
 
 Data-driven CV builder. Base content lives in `data/base.mjs`; each vacancy gets a
 small override file on top of it (`data/<company>.mjs`, kept private).
