@@ -16,6 +16,7 @@ export const cv = {
   summary: [
     'Software engineer with <b>10 years of commercial experience</b> spanning language tooling, backend services, cloud infrastructure, and engineering leadership. For the last ~3 years I’ve led platform teams at BetterMe; before that — 4 years of hands-on DevOps and full-stack delivery on AWS. I started my career building a COBOL-to-Java translator in Common Lisp.',
     'Proven record of productive stack switches: Common Lisp → Node.js/React → AWS/DevOps → engineering management.',
+    'None of the results below are mine alone — every one was delivered with teammates and whole teams, and belongs to them as much as to me.',
   ],
 
   experience: [
